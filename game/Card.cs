@@ -18,17 +18,5 @@ namespace cse210_U2.game
             cardValue = value;
         }
 
-        public bool isHigher(Card cardInst){
-            if (cardInst.cardValue > cardValue){
-            return true;
-            } 
-            return false;
-        }
-        public bool isLower(Card cardInst){
-            if (cardInst.getValue() < cardValue){
-            return true;
-            } 
-            return false;
-        }
     }
 }
