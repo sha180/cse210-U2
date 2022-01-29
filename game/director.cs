@@ -119,35 +119,36 @@ namespace cse210_U2.game
         /// Updates the player's score. 
         /// and prints it to the Console
         /// </summary>
-        public void DoUpdates(bool guess)
+        public void DoUpdates()
         {
             if (!isPlaying)
             {
                 return; 
             }
 
-            // bool CardCheck = true;
+            bool CardCheck = true;
             
-            // while (CardCheck)
-            // {
-            //     DrawCard();
-            //     Console.WriteLine($"tmpCard == {tmpCard.getValue()}");
-            //     Console.WriteLine($"players card == {players[curentplayer].getPrevCard().getValue()}");
-            //     if(players[curentplayer].getPrevCard().getValue() != tmpCard.getValue()){
-            //     Console.WriteLine($"tmpCard == {tmpCard.getValue()}");
-            //         deck.RemoveAt(cardIndex);
-            //         CardCheck = false;
-            //     }
-            // }
-                
-            // Console.WriteLine("Next card was: " + tmpCard.getValue());
-            if(guess){
-                players[curentplayer].AddPoints(100);
-            }else {
-                players[curentplayer].SubPoints(75);
+            while (CardCheck)
+            {
+                DrawCard();
+                // Console.WriteLine($"tmpCard == {tmpCard.getValue()}");
+                // Console.WriteLine($"players card == {players[curentplayer].getPrevCard().getValue()}");
+                if(players[curentplayer].getPrevCard().getValue() != tmpCard.getValue()){
+                // Console.WriteLine($"tmpCard == {tmpCard.getValue()}");
+                    deck.RemoveAt(cardIndex);
+                    CardCheck = false;
+                }
             }
+                
+            Console.WriteLine("Next card was: " + tmpCard.getValue());
 
-            Console.WriteLine( $"Player: {curentplayer + 1}'s score is: {players[curentplayer].getPoints()}");
+            // if(guess){
+            //     players[curentplayer].AddPoints(100);
+            // }else {
+            //     players[curentplayer].SubPoints(75);
+            // }
+
+            // Console.WriteLine( $"Player: {curentplayer + 1}'s score is: {players[curentplayer].getPoints()}");
 
         }
 
@@ -171,15 +172,29 @@ namespace cse210_U2.game
             {
                 case "l":
                     
-                    DoUpdates(players[curentplayer].getPrevCard().getValue() > tmpCard.getValue());
+                    DoUpdates();
                     
+            if(players[curentplayer].getPrevCard().getValue() > tmpCard.getValue()){
+                players[curentplayer].AddPoints(100);
+            }else {
+                players[curentplayer].SubPoints(75);
+            }
+
+            Console.WriteLine( $"Player: {curentplayer + 1}'s score is: {players[curentplayer].getPoints()}");
                     break;
 
                 case "h":
             
 
-                    DoUpdates(players[curentplayer].getPrevCard().getValue() > tmpCard.getValue());
+                    DoUpdates();
 
+            if(players[curentplayer].getPrevCard().getValue() < tmpCard.getValue()){
+                players[curentplayer].AddPoints(100);
+            }else {
+                players[curentplayer].SubPoints(75);
+            }
+
+            Console.WriteLine( $"Player: {curentplayer + 1}'s score is: {players[curentplayer].getPoints()}");
                     break;
 
                 case "#":
